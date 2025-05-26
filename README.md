@@ -42,3 +42,44 @@ This project demonstrates core skills in building scalable backend systems, asyn
 git clone https://github.com/<your-github-username>/merchant-identity-api.git
 cd merchant-identity-api
 ````
+
+2. Create and activate a virtual environment:
+
+````bash
+python3 -m venv venv
+source venv/bin/activate   # macOS/Linux
+.\venv\Scripts\activate    # Windows
+````
+
+3. Install dependencies:
+
+````bash
+pip install -r requirements.txt
+````
+
+4. Initialize the database:
+
+````bash
+python init_db.py
+````
+
+### Running the API
+
+````bash
+uvicorn main:app --reload
+````
+The API will be available at http://127.0.0.1:8000.
+
+## API Endpoints
+
+| Method | Path              | Description                   |
+|--------|-------------------|------------------------------|
+| GET    | `/`               | Health check endpoint         |
+| POST   | `/merchants`      | Create a new merchant         |
+| GET    | `/merchants`      | List all merchants            |
+| GET    | `/merchants/{id}` | Get a merchant by ID          |
+
+## Background Processing
+
+Merchant data enrichment runs as a background task upon creation, simulating risk analysis by assigning a random risk score and flag.
+
